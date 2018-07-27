@@ -1,6 +1,6 @@
 # Parallelism
 
-A replacement for Python's threading module used in attempt to efficient achieve single-core threading parallelism.
+A replacement for Python's threading module used in attempt to efficiently achieve single-core threading parallelism.
 
 # License
 
