@@ -120,7 +120,7 @@ class ParallelThread(object):
     def __run(self):
         while not self._terminated:
             try:
-                self._target(*self._args, **self._kwargs)
+                self._target(self, *self._args, **self._kwargs)
             except (KeyboardInterrupt, SystemExit):
                 break
 
