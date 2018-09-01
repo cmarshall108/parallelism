@@ -29,22 +29,6 @@ class ParallelThread(object):
         self._thread = None
         self._terminated = False
 
-    @classmethod
-    def sleep(cls):
-        """
-        Yield the process for a certain amount of time
-        """
-
-        time.sleep(0.0001)
-
-    @classmethod
-    def consider_yield(cls):
-        """
-        Yield the process so another process can be ran
-        """
-
-        time.sleep(0)
-
     def __repr__(self):
         return '<%s target=%s, args=%s, kwargs=%s, daemon=%s>' % (self.name,
             self._target, self._args, self._kwargs, self._daemon)
@@ -124,7 +108,7 @@ class ParallelThread(object):
             except (KeyboardInterrupt, SystemExit):
                 break
 
-            self.consider_yield()
+            consider_yield()
 
         self.shutdown()
 
@@ -144,6 +128,20 @@ class ParallelThread(object):
         self._thread = None
         self._terminated = False
 
+
+def sleep():
+    """
+    Yield the process for a certain amount of time
+    """
+
+    time.sleep(0.0001)
+
+def consider_yield():
+    """
+    Yield the process so another process can be ran
+    """
+
+    time.sleep(0)
 
 def threaded(function):
     """
