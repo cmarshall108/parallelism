@@ -182,12 +182,9 @@ def locked(function):
 
     def decorator(*args, **kwargs):
         lock = threading.Lock()
-        lock.acquire()
-
-        try:
+        
+        with lock:
             result = function(*args, **kwargs)
-        finally:
-            lock.release()
 
         del lock
         return result
